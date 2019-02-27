@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
     lineHeight: 25
   },
   button: {
-    borderColor: '#04B45F',
+    borderColor: '#04B45F', 
     padding: 10,
     marginTop: 20,
     color: '#04B45F',
