@@ -56,7 +56,7 @@ async  componentDidMount(){
   render() {
     return (
         <View style={{ flex: 1, width: null }}>
-            <HeaderComponent/>
+            <HeaderComponent />
               {
                 this.state.isLoadingPage ?
                     <LoadingComponent />

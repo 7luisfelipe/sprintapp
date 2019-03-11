@@ -14,6 +14,12 @@ import {
 
 import LoadingComponent from '../components/loadingComponent';
 import CardComponent from '../components/cardComponent';
+import ImageCardComponent from '../components/p/imageCardComponent';
+import ImageCardComponent1 from '../components/p/imageCardComponent.1';
+import ImageCardOrange from '../components/ImageCardOrangeComponent';
+import ImageCardRed from '../components/imageCardRedComponent';
+import ImageCardGreen from '../components/imageCardGreenComponent';
+import ImageCardBlue from '../components/imageCardBlueComponent';
 
 export default class Logout extends Component {
     state = {
@@ -61,7 +67,26 @@ async  componentDidMount(){
                     <LoadingComponent />
                 :
                 <View style={styles.container}>
-                   <CardComponent></CardComponent>
+                    <View style={styles.imgCard}>
+                        <ImageCardComponent title='Novidades' description='O que a de novo?'></ImageCardComponent>
+                        <ImageCardComponent1  title='Pets destaque' description='Quem mais chamou atenção?'></ImageCardComponent1>
+                    </View>
+                    <View style={styles.imgCard}>
+                        <ImageCardComponent1  title='Vídeos' description='Vídeos da semana'></ImageCardComponent1>
+                        <ImageCardComponent  title='Petiscos' description='confira o keldogs'></ImageCardComponent>
+                    </View>
+
+                    <View style={styles.imgCard}>
+                        <ImageCardBlue  title='Meu Pet' description='Meu melhor amigo'></ImageCardBlue>
+                        <ImageCardGreen  title='Prt Shops' description='Onde levar seu melhor amigo'></ImageCardGreen>
+                        <ImageCardRed title='Roupas' description='Para o melhor estilo'></ImageCardRed>
+                    </View>
+
+                    <View style={styles.imgCard}>
+                        <ImageCardRed  title='Eventos' description='Bora caoMinhada?'></ImageCardRed>
+                        <ImageCardOrange  title='Galeria' description='As melhores fotos'></ImageCardOrange>
+                        <ImageCardBlue title='Diversos' description='Curiosidades'></ImageCardBlue>
+                    </View>
                 </View>
                 }
         </View>           
@@ -72,7 +97,7 @@ async  componentDidMount(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
+        padding: 0,
         justifyContent: 'center'
     },
     button: {
@@ -99,7 +124,9 @@ const styles = StyleSheet.create({
     },
     imgCard: {
         alignItems: 'center',
-        flexDirection:'row'
+        flexDirection:'row',
+        marginTop: 10,
+        justifyContent: 'center'
     }
 });
 
