@@ -1,5 +1,4 @@
 import { createStackNavigator } from 'react-navigation';
-
 import Login from './login';
 import Main from './main';
 

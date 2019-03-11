@@ -15,8 +15,6 @@ rest.addResponseTransform(response => {//Isso é um Middleware para resposta da 
 rest.addAsyncRequestTransform(request => async () => {
     //Recupera o token
     const token = await AsyncStorage.getItem('@sprint:token');
-    //console.log('token...token');
-    //console.log(token);
 
     if(token)
         request.headers['Authorization'] = `Bearer ${token}`;

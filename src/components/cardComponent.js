@@ -6,10 +6,6 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import { 
-    Spinner
-} from 'native-base';
-
 export default class LoadingComponent extends Component {
 
   render() {

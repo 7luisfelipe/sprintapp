@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "apisauce": "^1.0.2",
-    "native-base": "^2.11.0",
+    "native-base": "^2.12.1",
     "react": "16.6.3",
-    "react-native": "0.58.4",
+    "react-native": "^0.58.6",
     "react-native-maps": "^0.23.0",
     "react-native-simple-modal": "^9.0.1",
     "react-navigation": "^2.18.2"

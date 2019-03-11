@@ -59,18 +59,6 @@ export default class App extends React.Component {
  
     closeModal = () => this.setState({ isOpenModal: false });
 
-    // componentDidMount(){
-    //     setTimeout(() => {
-    //         this.MapView.animateToCoordinate({ //Move para essas cordenadas, esse "this.mapView" vem da ref que foi criad ano componente pouco a baixo com arrow function
-    //             latitude: -26.915203,
-    //             longitude: -49.064200
-    //         },2000); //Velocidade da animação
-    //     }, 3000);
-    // }
-
-    _mapReady = () => {
-        //this.state.lights[0].mark.showCallout(); Ja mostra informações do primeiro elemento da lista
-    };
 
     //Simula dados
     fakeState = async () => {
@@ -88,9 +76,6 @@ export default class App extends React.Component {
             lst.push(light);
         });
 
-        // console.log('lst...lst');
-        // console.log(lst);
-
         await this.setState({
             lights: lst
         });
@@ -104,10 +89,9 @@ export default class App extends React.Component {
             });
             const lst = [];
             this.state.lights.map(l => {
-                //light.icon = imgs.greenIcon;
 
                 if(l.icon){
-                    if(l.icon == 1) // Beanco
+                    if(l.icon == 1) // Branco
                         l.icon = imgs.greenIcon;
 
                     else if(l.icon == 2) //Verde
@@ -147,9 +131,6 @@ export default class App extends React.Component {
             }
 
             const response = await rest.get('/light/user/lights');
-
-            console.log('Lista:');
-            console.log(response);
 
             const lights = response.data;
             
@@ -213,7 +194,6 @@ export default class App extends React.Component {
           zoomEnabled={true} //Zoom
           showsPointsOfInterest={false} //Ponstos de interesse
           showsBuildings={false} //Informações de construções
-          onMapReady={this._mapReady} //Quando o mapa tiver sido carregado
         >
 
         {
@@ -240,35 +220,8 @@ export default class App extends React.Component {
             horizontal
             showsHorizontalScrollIndicator={false} //Não mostra a scroll
             pagingEnabled //Pega o tamanho do elemento, e permite scroll apenas inteiro, sem parar na metade
-            // onMomentumScrollEnd={e => {
-            //     const scrolled = e.nativeEvent.contentOffset.x; //Quanto de scrol que foi movido (na horizontal (pq está .X))
-
-            //     const lightIndex = (scrolled > 0)
-            //     ? scrolled / Dimensions.get('window').width
-
-            //     : 0;
-
-            //     const { latitude, longitude, mark } = this.state.lights[lightIndex];
-
-            //     this.MapView.animateToCoordinate({//Essas variaveis são as carregadas a cima
-            //         latitude,
-            //         longitude
-            //     }, 1000);
-
-            //     setTimeout(() => {
-            //         mark.showCallout();
-            //     }, 1000)
-
-            // }} //Quando a ação do scroll acabou
         >
-        {/* {
-             this.state.lights.map(light => (
-                <View key={light.id} style={styles.light}>
-                    <Text>{light.title}</Text>
-                    <Text>{light.description}</Text>
-                </View>
-             ))
-        } */}
+
             <View style={styles.lightBox}>
                 <Text style={styles.titleBox}>
                     {/* Cedup HH */}
@@ -276,10 +229,6 @@ export default class App extends React.Component {
                 </Text>
                 <Text style={styles.informationBox}>
                     Acompanhe a situação das sinaleiras.
-
-                    {/* Trânsito lento devido a saída das escolas,
-                    considerando que essa sinaleira tem duas escolas proximas, Lucio esteves (ensino fundamental)
-                    e Cedupp HH (ensino médio integrado).  */}
                 </Text>
                 <TouchableOpacity onPress={() => this.refreshState()} style={styles.button}> 
                 {//openModal

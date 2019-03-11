@@ -7,7 +7,7 @@ import {
     AsyncStorage
 } from 'react-native';
 
-import { 
+import {
     Form, 
     Item, 
     Input, 
@@ -62,7 +62,7 @@ async componentDidMount(){
     try{
     this.setState({isLoadingPage : true});
 
-    //Busca as informações do AsyncStorage assim que inici a aaplicação
+    //Busca as informações do AsyncStorage assim que inicia a aplicação
     const token = await AsyncStorage.getItem('@sprint:token');
 
     //Se já está logado...

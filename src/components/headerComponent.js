@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, ImageBackground, View, Text } from 'react-native';
-import { Header } from 'native-base';
+
 export default class HeaderComponent extends Component {
   render() {
     return (
@@ -49,20 +49,3 @@ const styles = StyleSheet.create({
         marginTop: 0
     }
 });
-
- // <Header style={styles.header}>
-        
-        //   {/* <Left>
-        //     <Button transparent>
-        //       <Icon name='arrow-back' />
-        //     </Button>
-        //   </Left>
-        //   <Body>
-        //     <Title>Header</Title>
-        //   </Body>
-        //   <Right>
-        //     <Button transparent>
-        //       <Icon name='menu' />
-        //     </Button>
-        //   </Right> */}
-        // {/* // </Header> */}

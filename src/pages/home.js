@@ -2,15 +2,9 @@ import React, { Component } from 'react';
 import { 
     StyleSheet, 
     View, 
-    TouchableOpacity ,
     AsyncStorage,
     BackHandler
 } from 'react-native';
-
-import { 
-    Text,
-    Spinner
-} from 'native-base';
 
 import LoadingComponent from '../components/loadingComponent';
 import CardComponent from '../components/cardComponent';
@@ -84,10 +78,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         borderWidth: 2,
         alignItems: 'center',
-
-        // elevation: 5, 
-        // marginBottom: 3
-        // backgroundColor: 'rgba(231,76,60,1)'
     },
     txtButton: {
         color: '#04B45F',
