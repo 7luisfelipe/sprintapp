@@ -1,46 +1,57 @@
 import React, { Component } from 'react';
-import { 
-    View, 
+import {
+    View,
     StyleSheet,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    ImageBackground
 } from 'react-native';
+
+import {
+    Spinner
+} from 'native-base';
 
 export default class LoadingComponent extends Component {
 
-  render() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.cardBox}>
-                <View style={styles.left}>
-                        <Text style={styles.titleText}>Veículos</Text>
-                        <Text style={styles.resultText}>350</Text>
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.cardBox}>
+                    <ImageBackground style={{ flex: 1, width: null }}
+                        source={require('../imgs/bkg.png')}>
+                        <View style={styles.left}>
+                            <Text style={styles.titleText}>Veículos</Text>
+                            <Text style={styles.resultText}>350</Text>
+                        </View>
+                        <View style={styles.right}>
+                            <TouchableOpacity onPress={() => { }}>
+                                <View style={styles.cardDetail}>
+                                    <Text style={styles.cardDetailText}>+</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </ImageBackground>
                 </View>
-                <View style={styles.right}>
-                        <TouchableOpacity onPress={() => {}}> 
-                            <View style={styles.cardDetail}>
-                                <Text style={styles.cardDetailText}>+</Text>
-                            </View>
-                    </TouchableOpacity>  
+                <View style={styles.cardBox}>
+                    <ImageBackground style={{ flex: 1, width: null }}
+                        source={require('../imgs/bkg.png')}>
+                        <View style={styles.left}>
+                            <Text style={styles.titleText}>Ambulâncias</Text>
+                            <Text style={styles.resultText}>12</Text>
+                        </View>
+                        <View style={styles.right}>
+                            <TouchableOpacity onPress={() => { }}>
+                                <View style={styles.cardDetail}>
+                                    <Text style={styles.cardDetailText}>+</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </ImageBackground>
                 </View>
+
             </View>
-            <View style={styles.cardBox}>
-                <View style={styles.left}>
-                    <Text style={styles.titleText}>Ambulâncias</Text>
-                    <Text style={styles.resultText}>12</Text>
-                </View>
-                <View style={styles.right}>
-                        <TouchableOpacity onPress={() => {}}> 
-                            <View style={styles.cardDetail}>
-                                <Text style={styles.cardDetailText}>+</Text>
-                            </View>
-                    </TouchableOpacity>  
-                </View>
-            </View>
-           
-        </View>    
-    );
-  }
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -49,7 +60,7 @@ const styles = StyleSheet.create({
     },
     cardBox: {
         width: '100%',
-        backgroundColor:'#f8f8f8',
+        backgroundColor: '#f8f8f8',
         // alignItems: 'center',
         // padding:16,
         elevation: 12,
@@ -59,12 +70,12 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     cardDetail: {
-        width: 56, 
-        height: 56, 
-        borderRadius: 28, 
+        width: 56,
+        height: 56,
+        borderRadius: 28,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:'#04B45F',
+        backgroundColor: '#04B45F',
         elevation: 12
     },
     cardDetailText: {
@@ -80,15 +91,16 @@ const styles = StyleSheet.create({
     },
     left: {
         flex: 1,
-        padding:16
+        padding: 16
     },
     titleText: {
-        fontSize: 14
+        fontSize: 14,
+        color: '#fff'
     },
     resultText: {
-        color: '#000',
+        color: '#fff',
         fontSize: 42,
-        fontWeight: 'bold'  
+        fontWeight: 'bold'
     }
 });
 
