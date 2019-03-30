@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { 
-    StyleSheet, 
-    View, 
+import {
+    StyleSheet,
+    View,
     AsyncStorage,
     BackHandler
 } from 'react-native';
@@ -10,64 +10,75 @@ import LoadingComponent from '../components/loadingComponent';
 import CardComponent from '../components/cardComponent';
 
 export default class Logout extends Component {
-    state = {
-        isLoadingPage: true,
-        isLoading: false,
-        token: null      
-    }
 
-signOut = async () => {
-    try{      
-       this.setState({ 
-            isLoading: true,
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isLoadingPage: true,
+            isLoading: false,
             token: null
-         });
-       
-        await AsyncStorage.multiSet([
-            ['@sprint:token', '']
-        ]);            
-
-        await this.setState({
-            isLoading: false
-         });     
-        
-         //await this.props.navigation.replace('../login')
-         BackHandler.exitApp();
-     }catch(err){
-        
+        }
     }
-}
 
-async  componentDidMount(){
-    try{
-        this.setState({isLoadingPage : true});
-        await this.setState({isLoadingPage : false});
-    }catch(err){
+    signOut = async () => {
+        try {
+            this.setState({
+                isLoading: true,
+                token: null
+            });
 
-    }    
-}
+            await AsyncStorage.multiSet([
+                ['@sprint:token', '']
+            ]);
 
-  render() {
-    return (
-        <View style={{ flex: 1, width: null }}>
-              {
-                this.state.isLoadingPage ?
-                    <LoadingComponent />
-                :
-                <View style={styles.container}>
-                   <CardComponent></CardComponent>
-                </View>
+            await this.setState({
+                isLoading: false
+            });
+
+            //await this.props.navigation.replace('../login')
+            BackHandler.exitApp();
+        } catch (err) {
+
+        }
+    }
+
+    async  componentDidMount() {
+        try {
+            this.setState({ isLoadingPage: true });
+            await this.setState({ isLoadingPage: false });
+        } catch (err) {
+
+        }
+    }
+
+    render() {
+        return (
+            <View style={{ flex: 1, width: null }}>
+                {
+                    this.state.isLoadingPage ?
+                        <LoadingComponent />
+                        :
+                        <View style={styles.container}>
+                            <CardComponent
+                                name='Veículos'
+                                qtd={350}
+                            ></CardComponent>
+                            <CardComponent
+                                name='Ambulâncias'
+                                qtd={12}
+                            ></CardComponent>
+                        </View>
                 }
-        </View>           
-    );
-  }
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 15,
-        justifyContent: 'center'
+        padding: 15
     },
     button: {
         borderColor: '#04B45F',
@@ -89,7 +100,7 @@ const styles = StyleSheet.create({
     },
     imgCard: {
         alignItems: 'center',
-        flexDirection:'row'
+        flexDirection: 'row'
     }
 });
 

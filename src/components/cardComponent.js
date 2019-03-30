@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     View,
     StyleSheet,
@@ -7,52 +7,26 @@ import {
     ImageBackground
 } from 'react-native';
 
-import {
-    Spinner
-} from 'native-base';
-
-export default class LoadingComponent extends Component {
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.cardBox}>
-                    <ImageBackground style={{ flex: 1, width: null }}
-                        source={require('../imgs/bkg.png')}>
-                        <View style={styles.left}>
-                            <Text style={styles.titleText}>Veículos</Text>
-                            <Text style={styles.resultText}>350</Text>
-                        </View>
-                        <View style={styles.right}>
-                            <TouchableOpacity onPress={() => { }}>
-                                <View style={styles.cardDetail}>
-                                    <Text style={styles.cardDetailText}>+</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    </ImageBackground>
-                </View>
-                <View style={styles.cardBox}>
-                    <ImageBackground style={{ flex: 1, width: null }}
-                        source={require('../imgs/bkg.png')}>
-                        <View style={styles.left}>
-                            <Text style={styles.titleText}>Ambulâncias</Text>
-                            <Text style={styles.resultText}>12</Text>
-                        </View>
-                        <View style={styles.right}>
-                            <TouchableOpacity onPress={() => { }}>
-                                <View style={styles.cardDetail}>
-                                    <Text style={styles.cardDetailText}>+</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    </ImageBackground>
-                </View>
-
+const cardComponent = (props) => (
+    
+    <View style={styles.cardBox}>
+        <ImageBackground style={{ flex: 1, width: null }}
+            source={require('../imgs/bkg.png')}>
+            <View style={styles.left}>
+                <Text style={styles.titleText}>{props.name}</Text>
+                <Text style={styles.resultText}>{props.qtd}</Text>
             </View>
-        );
-    }
-}
+            <View style={styles.right}>
+                <TouchableOpacity onPress={() => { }}>
+                    <View style={styles.cardDetail}>
+                        <Text style={styles.cardDetailText}>+</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
+    </View>
+
+)
 
 const styles = StyleSheet.create({
     container: {
@@ -60,12 +34,12 @@ const styles = StyleSheet.create({
     },
     cardBox: {
         width: '100%',
+        maxHeight: 100,
         backgroundColor: '#f8f8f8',
         // alignItems: 'center',
         // padding:16,
         elevation: 12,
         flex: 1,
-        maxHeight: 100,
         marginTop: 25,
         marginBottom: 10
     },
@@ -104,3 +78,4 @@ const styles = StyleSheet.create({
     }
 });
 
+export default cardComponent

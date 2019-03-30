@@ -5,8 +5,6 @@ import {
     ImageBackground,
     View,
     ToastAndroid,
-    AppRegistry,
-    TouchableOpacity,
     AsyncStorage
 } from 'react-native';
 
@@ -42,7 +40,7 @@ export default class Login extends Component {
         }
     }
 
-    register() {
+    validate = () => {
         const emailError = validate('email', this.state.email)
         const passwordError = validate('password', this.state.password)
 
@@ -50,10 +48,12 @@ export default class Login extends Component {
             emailError: emailError,
             passwordError: passwordError
         })
-
-        if (!emailError && !passwordError) {
-            alert('Details are valid!')
+        
+        if (emailError || passwordError) {
+            return false
         }
+
+        return true
     }
 
     toast = (msg) => {
@@ -68,33 +68,35 @@ export default class Login extends Component {
 
     signIn = async () => {
         try {
-            this.setState({
-                isLoading: true,
-                token: null
-            });
+            if (this.validate()) {
+                // this.setState({
+                //     isLoading: true,
+                //     token: null
+                // });
 
-            /*
-            const response = await rest.post('/login', {
-                username: 'lara',
-                password: 'lara'
-            });
+                /*
+                const response = await rest.post('/login', {
+                    username: 'lara',
+                    password: 'lara'
+                });
+    
+                const token = response.headers.authorization;
+    
+                await this.setState({
+                    token: token,
+                    isLoading: false
+                });
+    
+                await AsyncStorage.multiSet([
+                    ['@sprint:token', token]
+                ]);
+    
+                if (token)
+                    await this.props.navigation.replace('Main')
+                */
 
-            const token = response.headers.authorization;
-
-            await this.setState({
-                token: token,
-                isLoading: false
-            });
-
-            await AsyncStorage.multiSet([
-                ['@sprint:token', token]
-            ]);
-
-            if (token)
-                await this.props.navigation.replace('Main')
-            */    
-
-           await this.props.navigation.replace('Main')
+                await this.props.navigation.replace('Main')   
+            }
 
         } catch (err) {
             Alert.alert(err);
@@ -137,27 +139,31 @@ export default class Login extends Component {
                             <View style={styles.container}>
                                 <View>
                                     <Form>
-                                        <TextField
-                                            onChangeText={value => this.setState({ email: value.trim() })}
-                                            onBlur={() => {
-                                                this.setState({
-                                                    emailError: validate('email', this.state.email)
-                                                })
-                                            }}
-                                            label="Email"
-                                            style={textField.textField}
-                                            error={this.state.emailError} />
+                                        <View>
+                                            <TextField
+                                                onChangeText={value => this.setState({ email: value.trim() })}
+                                                onBlur={() => {
+                                                    this.setState({
+                                                        emailError: validate('email', this.state.email)
+                                                    })
+                                                }}
+                                                label="Email" />
+                                            <Text style={[styles.errorMessage, this.state.emailError ? { display: 'flex' } : { display: 'none' }]}>{this.state.emailError ? this.state.emailError : ''}</Text>
+                                        </View>
 
-                                        <TextField
-                                            onChangeText={value => this.setState({ email: value.trim() })}
-                                            onBlur={() => {
-                                                this.setState({
-                                                    emailError: validate('email', this.state.email)
-                                                })
-                                            }}
-                                            style={textField.textField}
-                                            label="Senha"
-                                            error={this.state.emailError} />
+                                        <View>
+                                            <TextField
+                                                onChangeText={value => this.setState({ password: value.trim() })}
+                                                onBlur={() => {
+                                                    this.setState({
+                                                        passwordError: validate('password', this.state.password)
+                                                    })
+                                                }}
+                                                label="Senha"
+                                                error={this.state.passwordError} 
+                                                secureTextEntry={true} />
+                                            <Text style={[styles.errorMessage, this.state.passwordError ? { display: 'flex' } : { display: 'none' }]}>{this.state.passwordError}</Text>
+                                        </View>
 
                                         <Button full style={styles.button} onPress={() => this.signIn()} >
                                             <Text style={styles.txtButton}>Login</Text>
@@ -182,25 +188,6 @@ export default class Login extends Component {
     }
 }
 
-const textField = {
-    textField: StyleSheet.create({
-        field: {
-            color: '#fff',
-            fontSize: 14,
-            borderBottomColor: '#04B45F',
-            borderBottomWidth: 2
-        },
-        labelField: {
-            color: '#fff'
-        },
-        fieldBox: {
-            borderBottomColor: '#04B45F',
-            borderBottomWidth: 0,
-            marginLeft: 0
-        },
-    })
-}
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -222,5 +209,13 @@ const styles = StyleSheet.create({
     },
     buttonBox: {
         flexDirection: 'row'
+    },
+    errorMessage: {
+        color: '#fff',
+        fontSize: 12,
+        marginTop: 10
+    },
+    block: {
+        flex: 1
     }
 });
