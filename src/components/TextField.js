@@ -15,8 +15,8 @@ import {
 const TextField = (props) => (
 
     <Item floatingLabel style={styles.fieldBox} >
-        <Label style={styles.labelField} >{props.label}</Label>
-        <Input {...props} style={styles.field} />
+        <Label style={[styles.labelField, props.styleLabel]} >{props.label}</Label>
+        <Input {...props} style={[styles.field, props.styleInput]} />
     </Item>
 
 )

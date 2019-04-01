@@ -2,10 +2,16 @@ const validation = {
     email: {
         presence: {
             message: '^Por favor, insira um email'
-        }//,
-        // email: {
-        //     message: '^Por favor, insira um email válido'
-        // }
+        },
+        email: {
+            message: '^Por favor, insira um email válido'
+        }
+    },
+
+    user: {
+        presence: {
+            message: '^Por favor, insira um nome de usuário'
+        }
     },
 
     password: {
