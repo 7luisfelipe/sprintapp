@@ -69,33 +69,31 @@ export default class Login extends Component {
     signIn = async () => {
         try {
             if (this.validate()) {
-                // this.setState({
-                //     isLoading: true,
-                //     token: null
-                // });
-
-                /*
+                this.setState({
+                    isLoading: true,
+                    token: null
+                });
+                
                 const response = await rest.post('/login', {
                     username: 'lara',
                     password: 'lara'
                 });
-    
+                
                 const token = response.headers.authorization;
-    
+                
                 await this.setState({
                     token: token,
                     isLoading: false
                 });
-    
+                
                 await AsyncStorage.multiSet([
                     ['@sprint:token', token]
                 ]);
-    
+                
                 if (token)
                     await this.props.navigation.replace('Main')
-                */
 
-                await this.props.navigation.replace('Main')   
+                ///await this.props.navigation.replace('Main')   
             }
 
         } catch (err) {

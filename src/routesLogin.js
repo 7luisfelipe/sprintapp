@@ -4,8 +4,8 @@ import Cadastro from '../src/pages/resgisterUser'
 import Main from './main';
 
 export default createStackNavigator({
-    Cadastro,
     Login,
+    Cadastro,
     Main
 }, {
     navigationOptions: {
