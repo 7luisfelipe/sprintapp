@@ -2,8 +2,8 @@ import { AsyncStorage } from 'react-native';
 import { create } from 'apisauce';
 
 const rest = create({
-    baseURL: 'http://192.168.0.17:8080'
-    // baseURL: 'http://172.10.1.50:8080'
+    // baseURL: 'http://192.168.0.17:8080'
+    baseURL: 'http://172.10.1.50:8080'
 });
 
 //Para tratativa de erros

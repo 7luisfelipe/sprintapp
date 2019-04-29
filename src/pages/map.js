@@ -45,7 +45,8 @@ export default class App extends React.Component {
                 longitude: -49.077292,
                 icon: imgs.redIcon
             }
-        ]
+        ],
+        lightPressed: []
     }
 
     modalDidOpen = () => console.log("Modal did open.");
@@ -55,7 +56,9 @@ export default class App extends React.Component {
         console.log("Modal did close.");
     };
 
-    openModal = () => this.setState({ isOpenModal: true });
+    onPressModal = (press) => {
+        console.log()
+    }
 
     closeModal = () => this.setState({ isOpenModal: false });
 
@@ -122,6 +125,7 @@ export default class App extends React.Component {
     loadInfos = async () => {
         try {
             const token = await AsyncStorage.getItem('@sprint:token');
+            console.log('1')
             
             //Se já está logado...
             if (token) {
@@ -129,9 +133,10 @@ export default class App extends React.Component {
                     this.setState({ token: token });
                 }
             }
-
+            console.log('2')
             const response = await rest.get('/light/user/lights');
-// console.log( await rest.get('/light/user/lights') )
+            console.log('3')
+            
             const lights = response.data;
 
             await this.setState({
@@ -213,7 +218,7 @@ export default class App extends React.Component {
                                     latitude: light.latitude,
                                     longitude: light.longitude
                                 }}
-                                onPress={e => this.openModal()}
+                                onPress={value => this.setState({ lightPressed: value })}
                             />
                         ))
                     }
@@ -229,7 +234,9 @@ export default class App extends React.Component {
                     <View style={styles.lightBox}>
                         <Text style={styles.titleBox}>
                             {/* Cedup HH */}
-                            Sprint
+                            {
+                                this.lightPressed ? this.lightPressed.title : ''
+                            }
                 </Text>
                         <Text style={styles.informationBox}>
                             Acompanhe a situação das sinaleiras.
@@ -239,7 +246,7 @@ export default class App extends React.Component {
                                 this.state.isLoading ?
                                     <Spinner color='#04B45F' />
                                     :
-                                    <Text style={styles.txtButton} hidden={true}>Atualizar</Text>
+                                    <Text style={styles.txtButton} hidden={true}>Solicitar Preferência</Text>
                             }
                         </TouchableOpacity>
                     </View>
