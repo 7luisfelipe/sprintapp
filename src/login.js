@@ -4,9 +4,9 @@ import {
     StyleSheet,
     ImageBackground,
     View,
-    ToastAndroid,
-    AsyncStorage
+    ToastAndroid
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
     Form,
@@ -73,10 +73,9 @@ export default class Login extends Component {
                 token: null
             });
 
-            const response = await rest.post('/login', {
-                username: 'lara',
-                password: 'lara'
-            });
+            const response = await rest.post('/login',
+                {"username": "lara", "password": "lara"}
+            );
 
             const token = response.headers.authorization;
 
@@ -95,7 +94,7 @@ export default class Login extends Component {
             ///await this.props.navigation.replace('Main')
 
         } catch (err) {
-            Alert.alert(err);
+            console.log(err);
         }
     }
 

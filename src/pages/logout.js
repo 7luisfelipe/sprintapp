@@ -3,9 +3,9 @@ import {
     StyleSheet, 
     View, 
     TouchableOpacity ,
-    AsyncStorage,
     BackHandler
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { 
     Text,

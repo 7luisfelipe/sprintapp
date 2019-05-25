@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, AsyncStorage, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, Alert, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Spinner } from 'native-base';
 import MapView from 'react-native-maps';
 import Modal from "react-native-simple-modal";

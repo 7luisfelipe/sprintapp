@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    AsyncStorage,
     BackHandler
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import LoadingComponent from '../components/loadingComponent';
 import CardComponent from '../components/cardComponent';
