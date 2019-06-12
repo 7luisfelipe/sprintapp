@@ -4,9 +4,9 @@ import Cadastro from '../src/pages/resgisterUser'
 import Main from './main';
 
 export default createStackNavigator({
+    Main,
     Login,
     Cadastro,
-    Main
 }, {
     navigationOptions: {
         header: null

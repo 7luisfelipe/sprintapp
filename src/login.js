@@ -67,35 +67,35 @@ export default class Login extends Component {
     }
 
     signIn = async () => {
-        try {
-            this.setState({
-                isLoading: true,
-                token: null
-            });
+        // try {
+        //     this.setState({
+        //         isLoading: true,
+        //         token: null
+        //     });
 
-            const response = await rest.post('/login',
-                {"username": "lara", "password": "lara"}
-            );
+        //     const response = await rest.post('/login',
+        //         {"username": "lara", "password": "lara"}
+        //     );
 
-            const token = response.headers.authorization;
+        //     const token = response.headers.authorization;
 
-            await this.setState({
-                token: token,
-                isLoading: false
-            });
+        //     await this.setState({
+        //         token: token,
+        //         isLoading: false
+        //     });
 
-            await AsyncStorage.multiSet([
-                ['@sprint:token', token]
-            ]);
+        //     await AsyncStorage.multiSet([
+        //         ['@sprint:token', token]
+        //     ]);
 
-            if (token)
-                await this.props.navigation.replace('Main')
+        //     if (token)
+        //         await this.props.navigation.replace('Main')
 
-            ///await this.props.navigation.replace('Main')
+            await this.props.navigation.replace('Main')
 
-        } catch (err) {
-            console.log(err);
-        }
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
     }
 
     async componentDidMount() {
